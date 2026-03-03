@@ -35,7 +35,7 @@ class App extends React.Component {
       empresa: "",
       edad: "",
       pais: "",
-      contecto: "",
+      contacto: "",
     },
   };
 
@@ -53,7 +53,14 @@ class App extends React.Component {
   mostrarModalInsertar = () => {
     this.setState({
       modalInsertar: true,
-      form: { id: "", nombre: "", empresa: "" }, //  limpia form al abrir
+      form: {
+        id: "",
+        nombre: "",
+        empresa: "",
+        edad: "",
+        pais: "",
+        contacto: "",
+      }, // limpia form al abrir
     });
   };
 
@@ -75,11 +82,29 @@ class App extends React.Component {
 
     const nuevaData = data.map((registro) =>
       registro.id === form.id
-        ? { ...registro, nombre: form.nombre, empresa: form.empresa }
+        ? {
+            ...registro,
+            nombre: form.nombre,
+            empresa: form.empresa,
+            edad: form.edad,
+            pais: form.pais,
+            contacto: form.contacto,
+          }
         : registro
     );
 
-    this.setState({ data: nuevaData, modalActualizar: false });
+    this.setState({
+      data: nuevaData,
+      modalActualizar: false,
+      form: {
+        id: "",
+        nombre: "",
+        empresa: "",
+        edad: "",
+        pais: "",
+        contacto: "",
+      },
+    });
   };
 
   eliminar = (dato) => {
@@ -102,12 +127,22 @@ class App extends React.Component {
       id: nuevoId,
       nombre: form.nombre,
       empresa: form.empresa,
+      edad: form.edad,
+      pais: form.pais,
+      contacto: form.contacto,
     };
 
     this.setState({
       data: [...data, valorNuevo],
       modalInsertar: false,
-      form: { id: "", nombre: "", empresa: "" },
+      form: {
+        id: "",
+        nombre: "",
+        empresa: "",
+        edad: "",
+        pais: "",
+        contacto: "",
+      },
     });
   };
 
@@ -141,6 +176,9 @@ class App extends React.Component {
                   <td>{dato.id}</td>
                   <td>{dato.nombre}</td>
                   <td>{dato.empresa}</td>
+                  <td>{dato.edad}</td>
+                  <td>{dato.pais}</td>
+                  <td>{dato.contacto}</td>
                   <td>
                     <Button
                       color="primary"
@@ -206,7 +244,7 @@ class App extends React.Component {
                 name="edad"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.form.empresa}
+                value={this.state.form.edad}
               />
             </FormGroup>
 
@@ -217,7 +255,7 @@ class App extends React.Component {
                 name="pais"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.form.empresa}
+                value={this.state.form.pais}
               />
             </FormGroup>
 
@@ -228,7 +266,7 @@ class App extends React.Component {
                 name="contacto"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.form.empresa}
+                value={this.state.form.contacto}
               />
             </FormGroup>
           </ModalBody>
@@ -295,7 +333,7 @@ class App extends React.Component {
                 name="edad"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.form.empresa}
+                value={this.state.form.edad}
               />
             </FormGroup>
 
@@ -306,7 +344,7 @@ class App extends React.Component {
                 name="pais"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.form.empresa}
+                value={this.state.form.pais}
               />
             </FormGroup>
 
@@ -317,7 +355,7 @@ class App extends React.Component {
                 name="contacto"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.form.empresa}
+                value={this.state.form.contacto}
               />
             </FormGroup>
             
